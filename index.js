@@ -5,38 +5,27 @@ const urovenHTML = Number(prompt("Ohodnoťte svoje dovednosti v HTML. Zadejte sv
 const urovenCSS = Number(prompt("Ohodnoťte svoje dovednosti v CSS. Zadejte svoji úroveň v bodech 0-100."))
 const urovenJS = Number(prompt("Ohodnoťte svoje dovednosti v JS. Zadejte svoji úroveň v bodech 0-100."))
 
-const updateSkill = (id, uroven) => {
-  document.querySelector("#id")
-  const value = document.querySelector(".skill__value")
+const updateSkill = (skillId, value) => {
+  const progress = document.querySelector(`#${skillId} .skill__progress`)
+  progress.style.width = `${value}%`
+  const newValue = document.querySelector(`#${skillId} .skill__value`)
+  newValue.textContent = `${value}/100`
 }
 
 if (urovenHTML >=0 && urovenHTML <=100) { 
 updateSkill("skill1", urovenHTML)
-const progressHTML = document.querySelector("#skill1 .skill__progress")
-progressHTML.style.width = urovenHTML + '%';
-const valueHTML = document.querySelector("#skill1 .skill__value")
-valueHTML.textContent = urovenHTML + "/ 100";
-
-  if (urovenCSS >=0 && urovenCSS <=100)
-  {updateSkill("skill2", urovenCSS)
-  const progressCSS = document.querySelector("#skill2 .skill__progress")
-  progressCSS.style.width = urovenCSS + '%';
-  const valueCSS = document.querySelector("#skill2 .skill__value")
-  valueCSS.textContent = urovenCSS + "/ 100";
-
-    if (urovenJS >=0 && urovenJS <=100) {
-      updateSkill("skill3", urovenJS)
-      const progressJS = document.querySelector("#skill3 .skill__progress")
-      progressJS.style.width = urovenJS + '%';
-      const valueJS = document.querySelector("#skill3 .skill__value")
-      valueJS.textContent = urovenJS + "/ 100";
-
-    } else {
-      document.body.innerHTML += "Zadané hodnoty nejsou v rozmezí 0-100. Prosím, zadejte platné hodnoty."
-  } 
 } else {
-  document.body.innerHTML += "Zadané hodnoty nejsou v rozmezí 0-100. Prosím, zadejte platné hodnoty."
-} 
-} else {
-  document.body.innerHTML += "Zadané hodnoty nejsou v rozmezí 0-100. Prosím, zadejte platné hodnoty."
+  document.body.innerHTML += "Zadané hodnoty pro úroveň HTML nejsou v rozmezí 0-100. Prosím, zadejte platné hodnoty."
 }
+
+if (urovenCSS >=0 && urovenCSS <=100)
+  {updateSkill("skill2", urovenCSS)
+} else {
+  document.body.innerHTML += "Zadané hodnoty pro úroveň CSS nejsou v rozmezí 0-100. Prosím, zadejte platné hodnoty."
+} 
+
+if (urovenJS >=0 && urovenJS <=100) {
+  updateSkill("skill3", urovenJS)
+} else {
+  document.body.innerHTML += "Zadané hodnoty pro úroveň JS nejsou v rozmezí 0-100. Prosím, zadejte platné hodnoty."
+} 
